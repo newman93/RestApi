@@ -12,10 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("api", name="api_")
+ */
 class PostController extends AbstractController
 {
     /**
-     * @Route("/api/posts/{id}", name="show_post", methods={"GET"})
+     * @Route("/posts/{id}", name="show_post", methods={"GET"})
      */
     public function showPost(SerializerInterface $serializer, $id)
     {
@@ -47,7 +50,7 @@ class PostController extends AbstractController
     /**
      * @param Request $request
      * @return JsonResponse
-     * @Route("api/posts", name="create_posts", methods={"POST"}) 
+     * @Route("/posts", name="create_posts", methods={"POST"}) 
      */
     public function createPost(Request $request, SerializerInterface $serializer, Validate $validate) {
         $data = $request->getContent();
@@ -75,7 +78,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/api/posts",name="list_posts", methods={"GET"})
+     * @Route("/posts",name="list_posts", methods={"GET"})
      */
 
     public function listPost(SerializerInterface $serializer) {
@@ -108,7 +111,7 @@ class PostController extends AbstractController
     /**
      * @param Request $request
      * @param $id
-     * @Route("/api/posts/{id}",name="update_post", methods={"PUT"})
+     * @Route("/posts/{id}",name="update_post", methods={"PUT"})
      * @return JsonResponse
      */
     public function updatePost(Request $request, $id, SerializerInterface $serializer, Validate $validate) {
@@ -155,7 +158,7 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/api/posts/{id}",name="delete_post", methods={"DELETE"})
+     * @Route("/posts/{id}",name="delete_post", methods={"DELETE"})
      */
 
     public function deletePost($id) {

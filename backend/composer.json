@@ -1,12 +1,6 @@
 {
     "type": "project",
     "license": "proprietary",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/jethrohicks/FOSUserBundle.git"
-        }
-    ],
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
@@ -24,9 +18,7 @@
         "symfony/security-bundle": "5.0.*",
         "symfony/twig-bundle": "5.0.*",
         "symfony/validator": "5.0.*",
-        "symfony/yaml": "5.0.*",
-        "friendsofsymfony/user-bundle": "dev-bugfix"
-
+        "symfony/yaml": "5.0.*"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.15"
