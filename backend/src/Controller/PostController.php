@@ -11,15 +11,41 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Nelmio\ApiDocBundle\Annotation\Security;
+use Swagger\Annotations as SWG;
 
 /**
  * @Route("api", name="api_")
- */
+*/
 class PostController extends AbstractController
 {
     /**
      * @Route("/posts/{id}", name="show_post", methods={"GET"})
-     */
+     * @SWG\Response(
+     *     response=200,
+     *     description="Returns post with specific id",
+     *     @SWG\Schema(
+     *         type="array",
+     *         @SWG\Items(ref=@Model(type=Post::class, groups={"full"}))
+     *     )
+     * )
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns if post not found",
+     *     @SWG\Schema(
+     *         type="array",
+     *         @SWG\Items(ref=@Model(type=Post::class, groups={"full"}))
+     *     )
+     * )
+     * @SWG\Parameter(
+     *     name="id",
+     *     in="query",
+     *     type="string",
+     *     description="The field used to select post"
+     * )
+     * @SWG\Tag(name="rewards")
+    */
     public function showPost(SerializerInterface $serializer, $id)
     {
        $post = $this->getDoctrine()->getRepository(Post::class)->find($id);

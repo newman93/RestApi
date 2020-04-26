@@ -1,0 +1,23 @@
+<h1>Edit Post N°{{id}}</h1>
+
+
+<form (submit)="editPost(title,description)" class="well ">
+
+  <div>
+    <label>Title:</label>
+    <input type="text" placeholder="edit title" [(ngModel)]="title" name="title">
+  </div>
+
+
+
+  <div>
+    <label>Description:</label>
+    <input type="text" placeholder="edt description" [(ngModel)]="description" name="description">
+  </div>
+  <div *ngFor="let error of errors" class="alert alert-danger">
+  </div>
+
+
+  <button type="submit" >Save changes</button>
+
+</form>
